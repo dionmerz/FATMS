@@ -27,7 +27,7 @@ import java.net.URL;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final static String LOGIN_URL
-            = "http://cssgate.insttech.washington.edu/~dionmerz/fatms.php?cmd=login";
+            = "https://students.washington.edu/jwolf059/FATMS.php?cmd=login";
 
 
     private SharedPreferences mSharedPreferences;
@@ -102,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         try {
 
             String userID = mUserEmailText.getText().toString();
-            sb.append("id=");
+            sb.append("&email=");
             sb.append(userID);
 
 

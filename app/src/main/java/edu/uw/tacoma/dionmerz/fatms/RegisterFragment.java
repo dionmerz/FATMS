@@ -30,7 +30,7 @@ import java.net.URLEncoder;
 public class RegisterFragment extends Fragment {
 
     private final static String REGISTER_URL
-            = "http://cssgate.insttech.washington.edu/~dionmerz/fatms.php?cmd=register";
+            = "https://students.washington.edu/jwolf059/FATMS.php?cmd=register";
 
     private Bundle mBundle;
     private EditText mFirstName;
