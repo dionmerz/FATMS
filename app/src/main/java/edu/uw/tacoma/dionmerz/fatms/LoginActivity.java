@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,13 +21,10 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener,
-        RegisterFragment.RegisterListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final static String LOGIN_URL
             = "http://cssgate.insttech.washington.edu/~dionmerz/fatms.php?cmd=login";
@@ -55,20 +51,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mPwdText = (EditText) findViewById(R.id.pass_text);
         mRegisterButton = (Button) findViewById(R.id.register_button);
         mLoginButton = (Button) findViewById(R.id.login_button);
+        mLoginButton.setOnClickListener(this);
         mRegisterButton.setOnClickListener(this);
 
-
-        Button signInButton = (Button) findViewById(R.id.login_button);
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-                // login(userId, pwd);
-            }
-
-        });
 
     }
 
@@ -82,12 +67,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (networkInfo != null && networkInfo.isConnected()) {
 
             try {
+
+                String url = buildLoginURL();
                 //Check if the login and password are valid
-                //new LoginTask().execute(url);
+                new LoginTask().execute(url);
 
 
-                //Intent i = new Intent(this, CourseActivity.class);
-                //startActivity(i);
+                mSharedPreferences.edit()
+                        .putBoolean(getString(R.string.LOGGEDIN), true)
+                        .commit();
+
+
+                Toast.makeText(this, "Logged in Successful", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(this, FlightSearchActivity.class);
+                startActivity(i);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -99,15 +92,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        mSharedPreferences.edit()
-                .putBoolean(getString(R.string.LOGGEDIN), true)
-                .commit();
-
-
     }
 
 
-    private String buildLoginURL(View v) {
+    private String buildLoginURL() {
 
         StringBuilder sb = new StringBuilder(LOGIN_URL);
 
@@ -123,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             sb.append(userPwd);
 
         } catch (Exception e) {
-            Toast.makeText(v.getContext(), "Something wrong with the url" + e.getMessage(), Toast.LENGTH_LONG)
+            Toast.makeText(this, "Something wrong with the url" + e.getMessage(), Toast.LENGTH_LONG)
                     .show();
         }
         return sb.toString();
@@ -133,41 +121,50 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         Intent intent;
 
+        String userId = mUserEmailText.getText().toString();
+        String pwd = mPwdText.getText().toString();
+        if (TextUtils.isEmpty(userId)) {
+            Toast.makeText(v.getContext(), "Enter userid"
+                    , Toast.LENGTH_SHORT)
+                    .show();
+            mUserEmailText.requestFocus();
+            return;
+        }
+        if (!userId.contains("@")) {
+            Toast.makeText(v.getContext(), "Enter a valid email address"
+                    , Toast.LENGTH_SHORT)
+                    .show();
+            mUserEmailText.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(pwd)) {
+            Toast.makeText(v.getContext(), "Enter password"
+                    , Toast.LENGTH_SHORT)
+                    .show();
+            mPwdText.requestFocus();
+            return;
+        }
+        if (pwd.length() < 6) {
+            Toast.makeText(v.getContext()
+                    , "Enter password of at least 6 characters"
+                    , Toast.LENGTH_SHORT)
+                    .show();
+            mPwdText.requestFocus();
+            return;
+        }
+
         switch (v.getId()) {
+
+
+            case R.id.login_button:
+                login(userId, pwd);
+
+                break;
+
             case R.id.register_button:
 
-                String userId = mUserEmailText.getText().toString();
-                String pwd = mPwdText.getText().toString();
-                if (TextUtils.isEmpty(userId)) {
-                    Toast.makeText(v.getContext(), "Enter userid"
-                            , Toast.LENGTH_SHORT)
-                            .show();
-                    mUserEmailText.requestFocus();
-                    return;
-                }
-                if (!userId.contains("@")) {
-                    Toast.makeText(v.getContext(), "Enter a valid email address"
-                            , Toast.LENGTH_SHORT)
-                            .show();
-                    mUserEmailText.requestFocus();
-                    return;
-                }
 
-                if (TextUtils.isEmpty(pwd)) {
-                    Toast.makeText(v.getContext(), "Enter password"
-                            , Toast.LENGTH_SHORT)
-                            .show();
-                    mPwdText.requestFocus();
-                    return;
-                }
-                if (pwd.length() < 6) {
-                    Toast.makeText(v.getContext()
-                            , "Enter password of at least 6 characters"
-                            , Toast.LENGTH_SHORT)
-                            .show();
-                    mPwdText.requestFocus();
-                    return;
-                }
 
                 mRegisterFragment = new RegisterFragment();
                 Bundle args = new Bundle();
@@ -189,20 +186,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    @Override
-    public void register(String url) {
-        RegisterTask task = new RegisterTask();
-        task.execute(new String[]{url.toString()});
-
-// Takes you back to the previous fragment by popping the current fragment out.
-        getSupportFragmentManager().popBackStackImmediate();
-    }
 
 
 
 
 
-    private class RegisterTask extends AsyncTask<String, Void, String> {
+    private class LoginTask extends AsyncTask<String, Void, String> {
 
 
         @Override
