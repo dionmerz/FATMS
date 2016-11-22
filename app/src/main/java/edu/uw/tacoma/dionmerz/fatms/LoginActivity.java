@@ -73,15 +73,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 new LoginTask().execute(url);
 
 
-                mSharedPreferences.edit()
-                        .putBoolean(getString(R.string.LOGGEDIN), true)
-                        .commit();
-
-
-                Toast.makeText(this, "Logged in Successful", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(this, FlightSearchActivity.class);
-                startActivity(i);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -217,7 +208,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                 } catch (Exception e) {
-                    response = "Unable to add course, Reason: "
+                    response = "Unable to add User, Reason: "
                             + e.getMessage();
                 } finally {
                     if (urlConnection != null)
@@ -241,10 +232,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 String status = (String) jsonObject.get("result");
+
                 if (status.equals("success")) {
-                    Toast.makeText(getApplicationContext(), "User successfully registered!"
-                            , Toast.LENGTH_LONG)
-                            .show();
+                    mSharedPreferences.edit()
+                            .putBoolean(getString(R.string.LOGGEDIN), true)
+                            .commit();
+
+
+                    Toast.makeText(getApplication(), "Logged in Successful", Toast.LENGTH_LONG).show();
+
+
+                    Intent i = new Intent(getApplication(), FlightSearchActivity.class);
+                    startActivity(i);
+
+
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Failed to add: "
                                     + jsonObject.get("error")

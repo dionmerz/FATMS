@@ -2,6 +2,8 @@ package edu.uw.tacoma.dionmerz.fatms;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -41,6 +43,8 @@ public class RegisterFragment extends Fragment {
     private EditText mState;
     private EditText mZip;
 
+    private SharedPreferences mSharedPreferences;
+
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -62,14 +66,19 @@ public class RegisterFragment extends Fragment {
         mState = (EditText) v.findViewById(R.id.edit_text_state);
         mZip = (EditText) v.findViewById(R.id.edit_text_zip);
 
-        mBundle = savedInstanceState;
+        mSharedPreferences =
+                getActivity().getSharedPreferences(getString(R.string.LOGIN_PREFS)
+                        , Context.MODE_PRIVATE);
+
 
         Button register = (Button) v.findViewById(R.id.reg_button);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-              String url = buildRegisterURL(view);
+
+                String url = buildRegisterURL(view);
+                register(url);
 
 
             }
@@ -90,18 +99,16 @@ public class RegisterFragment extends Fragment {
     }
 
 
-
-
     private String buildRegisterURL(View v) {
 
         StringBuilder sb = new StringBuilder(REGISTER_URL);
 
         try {
-            String email = mBundle.getString("email");
+            String email = getArguments().getString("email");
             sb.append("email=");
             sb.append(email);
 
-            String pwd = mBundle.getString("pwd");
+            String pwd = getArguments().getString("pwd");
             sb.append("&pwd=");
             sb.append(pwd);
 
@@ -133,17 +140,12 @@ public class RegisterFragment extends Fragment {
             sb.append("&zip=");
             sb.append(zip);
 
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             Toast.makeText(v.getContext(), "Something wrong with the url" + e.getMessage(), Toast.LENGTH_LONG)
                     .show();
         }
         return sb.toString();
     }
-
-
-
-
 
 
     private class RegisterTask extends AsyncTask<String, Void, String> {
@@ -193,21 +195,30 @@ public class RegisterFragment extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             // Something wrong with the network or the URL.
+
+            Log.i("OnPostExecute: ", result);
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 String status = (String) jsonObject.get("result");
                 if (status.equals("success")) {
-                    Toast.makeText(getActivity().getApplicationContext(), "User successfully registered!"
-                            , Toast.LENGTH_LONG)
-                            .show();
+                    mSharedPreferences.edit()
+                            .putBoolean(getString(R.string.LOGGEDIN), true)
+                            .commit();
+
+
+                    Toast.makeText(getActivity(), "Registration Successful", Toast.LENGTH_LONG).show();
+
+
+                    Intent i = new Intent(getActivity(), FlightSearchActivity.class);
+                    startActivity(i);
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(), "Failed to add: "
+                    Toast.makeText(getActivity().getApplicationContext(), "Failed to register: "
                                     + jsonObject.get("error")
                             , Toast.LENGTH_LONG)
                             .show();
                 }
             } catch (JSONException e) {
-                Toast.makeText(getActivity().getApplicationContext(), "Something wrong with the data" +
+                Toast.makeText(getActivity(), "Something wrong with the data" +
                         e.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
