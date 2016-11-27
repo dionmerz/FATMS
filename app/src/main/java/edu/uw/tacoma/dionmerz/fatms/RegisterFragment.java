@@ -25,6 +25,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import edu.uw.tacoma.dionmerz.fatms.flight.FlightSearchActivity;
+
 
 /**
  * A simple {@link Fragment} subclass.
