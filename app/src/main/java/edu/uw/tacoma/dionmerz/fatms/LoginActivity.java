@@ -24,6 +24,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import edu.uw.tacoma.dionmerz.fatms.flight.FlightSearchActivity;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final static String LOGIN_URL
