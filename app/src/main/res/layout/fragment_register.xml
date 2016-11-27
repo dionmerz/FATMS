@@ -1,4 +1,3 @@
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,104 +5,121 @@
     android:background="@color/colorPrimaryDark"
     tools:context="edu.uw.tacoma.dionmerz.fatms.RegisterFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
 
-        <EditText
-            android:id="@+id/edit_text_fname"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:inputType="text"
-            android:textSize="24sp"
-            android:background="@drawable/text_style"
-            android:hint="First name..." />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_text_lname"
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/text_register_title"
+                android:textSize="32sp" />
+
+
+        </LinearLayout>
+
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textSize="24sp"
-            android:background="@drawable/text_style"
-            android:hint="Last name..." />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp">
 
-        <EditText
-            android:id="@+id/edit_text_phone"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:background="@drawable/text_style"
-            android:hint="Phone number..." />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edit_text_address"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:background="@drawable/text_style"
-            android:hint="Address..." />
 
-        <EditText
-            android:id="@+id/edit_text_city"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:background="@drawable/text_style"
-            android:hint="City..." />
+                <EditText
+                    android:id="@+id/edit_text_fname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/text_style"
+                    android:hint="First name..."
+                    android:inputType="text"
+                    android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/edit_text_state"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:background="@drawable/text_style"
-            android:hint="State..." />
+                <EditText
+                    android:id="@+id/edit_text_lname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/text_style"
+                    android:hint="Last name..."
+                    android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/edit_text_zip"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:background="@drawable/text_style"
-            android:hint="Zip Code..." />
+                <EditText
+                    android:id="@+id/edit_text_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/text_style"
+                    android:hint="Phone number..."
+                    android:textSize="20sp" />
 
+                <EditText
+                    android:id="@+id/edit_text_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/text_style"
+                    android:hint="Address..."
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edit_text_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/text_style"
+                    android:hint="City..."
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edit_text_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/text_style"
+                    android:hint="State..."
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/edit_text_zip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/text_style"
+                    android:hint="Zip Code..."
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/reg_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:text="Register" />
+
+            </LinearLayout>
+
+        </ScrollView>
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="100dp"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/reg_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="20dp"
-            android:text="Register"/>
-
-    </FrameLayout>
-
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:gravity="center"
-        android:text="@string/text_register_title" />
 
 </FrameLayout>

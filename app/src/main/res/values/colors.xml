@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#12a8d6</color>
     <color name="colorFields">#d7d7d9</color>
-    <color name="colorPrimaryDark">#64a1ea</color>
+    <color name="colorPrimaryDark">#6a8eba</color>
     <color name="colorAccent">#FF4081</color>
     <color name="edit_text_outline">#147291</color>
+    <color name="colorBackground">#eff4fa</color>
 </resources>
