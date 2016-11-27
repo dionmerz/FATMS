@@ -95,13 +95,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         try {
 
             String userID = mUserEmailText.getText().toString();
-            sb.append("&email=");
+            sb.append("&email=\'");
             sb.append(userID);
-
+            sb.append("\'");
 
             String userPwd = mPwdText.getText().toString();
-            sb.append("&pwd=");
+            sb.append("&pwd=\'");
             sb.append(userPwd);
+            sb.append("\'");
+
 
         } catch (Exception e) {
             Toast.makeText(this, "Something wrong with the url" + e.getMessage(), Toast.LENGTH_LONG)
@@ -166,8 +168,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 mRegisterFragment.setArguments(args);
                 FragmentTransaction transaction = getSupportFragmentManager()
                         .beginTransaction()
-                        .replace(R.id.activity_login, mRegisterFragment)
-                        .addToBackStack(null);
+                        .add(R.id.activity_login, mRegisterFragment);
 
                 // Commit the transaction
                 transaction.commit();
@@ -205,7 +206,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                 } catch (Exception e) {
-                    response = "Unable to add User, Reason: "
+                    response = "Unable to login, Reason: "
                             + e.getMessage();
                 } finally {
                     if (urlConnection != null)
