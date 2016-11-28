@@ -96,6 +96,7 @@ public class RegisterFragment extends Fragment {
     }
 
     public void register(String url) {
+        Log.i("URL", url);
         RegisterTask task = new RegisterTask();
         task.execute(new String[]{url.toString()});
 
@@ -110,56 +111,62 @@ public class RegisterFragment extends Fragment {
 
         try {
             String email = getArguments().getString("email");
-            sb.append("&email=\'");
+            sb.append("&email=");
             sb.append(email);
-            sb.append("\'");
 
             String pwd = getArguments().getString("pwd");
-            sb.append("&pwd=\'");
+            sb.append("&pwd=");
             sb.append(pwd);
-            sb.append("\'");
 
             String firstName = mFirstName.getText().toString();
-            sb.append("&fname=\'");
-            sb.append(firstName);
-            sb.append("\'");
+            sb.append("&fname=");
+            sb.append(cleanSpace(firstName));
 
             String lastName = mLastName.getText().toString();
-            sb.append("&lname=\'");
-            sb.append(lastName);
-            sb.append("\'");
+            sb.append("&lname=");
+            sb.append(cleanSpace(lastName));
 
             String phoneNum = mPhoneNumber.getText().toString();
-            sb.append("&phone=\'");
-            sb.append(lastName);
-            sb.append("\'");
+            sb.append("&phone=");
+            sb.append(cleanSpace(phoneNum));
 
             String address = mAddress.getText().toString();
-            sb.append("&address=\'");
-            sb.append(address);
-            sb.append("\'");
+            sb.append("&address=");
+            sb.append(cleanSpace(address));
 
             String city = mCity.getText().toString();
-            sb.append("&city=\'");
-            sb.append(city);
-            sb.append("\'");
+            sb.append("&city=");
+            sb.append(cleanSpace(city));
 
             String state = mState.getText().toString();
-            sb.append("&state=\'");
-            sb.append(state);
-            sb.append("\'");
+            sb.append("&state=");
+            sb.append(cleanSpace(state));
 
             String zip = mZip.getText().toString();
-            sb.append("&zip=\'");
+            sb.append("&zip=");
             sb.append(zip);
-            sb.append("\'");
 
         } catch (Exception e) {
             Toast.makeText(v.getContext(), "Something wrong with the url" + e.getMessage(), Toast.LENGTH_LONG)
                     .show();
         }
+
         return sb.toString();
     }
+
+    private String cleanSpace(String theText) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < theText.length(); i++) {
+            if (theText.charAt(i) == 32) {
+                stringBuilder.append("%20");
+            } else {
+                stringBuilder.append(theText.charAt(i));
+            }
+        }
+        return stringBuilder.toString();
+
+    }
+
 
 
     private class RegisterTask extends AsyncTask<String, Void, String> {

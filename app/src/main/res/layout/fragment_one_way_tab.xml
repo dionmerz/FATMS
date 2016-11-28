@@ -54,6 +54,18 @@
             android:id="@+id/button_departure_date"
             android:layout_weight="1" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_style"
+            android:id="@+id/button_search_one_way"
+            android:text="SEARCH"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+
+            />
+
 
     </LinearLayout>
 

@@ -95,14 +95,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         try {
 
             String userID = mUserEmailText.getText().toString();
-            sb.append("&email=\'");
+            sb.append("&email=");
             sb.append(userID);
-            sb.append("\'");
+
 
             String userPwd = mPwdText.getText().toString();
-            sb.append("&pwd=\'");
+            sb.append("&pwd=");
             sb.append(userPwd);
-            sb.append("\'");
+
 
 
         } catch (Exception e) {
