@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -226,11 +227,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
          */
         @Override
         protected void onPostExecute(String result) {
+
             // Something wrong with the network or the URL.
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 String status = (String) jsonObject.get("result");
-
                 if (status.equals("success")) {
                     mSharedPreferences.edit()
                             .putBoolean(getString(R.string.LOGGEDIN), true)
@@ -246,8 +247,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "Failed to add: "
-                                    + jsonObject.get("error")
+                    Toast.makeText(getApplicationContext(), "Login email or password invalid... "
                             , Toast.LENGTH_LONG)
                             .show();
                 }

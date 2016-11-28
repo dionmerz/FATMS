@@ -6,4 +6,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="edit_text_outline">#147291</color>
     <color name="colorBackground">#eff4fa</color>
+    <color name="date_color">#009ee7</color>
 </resources>
