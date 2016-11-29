@@ -33,9 +33,8 @@ public class Itinerary {
         mDepartureAPName = theDepartureAP;
         mArivalAPName = theArrivalAP;
         mDate = theDate;
-        mDepartureAPName = theDepartureTime;
+        mDepartureTime = theDepartureTime;
         mArrivalTime = theArrivalTime;
-
 
     }
 
@@ -44,6 +43,7 @@ public class Itinerary {
     }
 
     public void addFlight(Itinerary theFlight) {
+        Log.i("Flight added: ", theFlight.getmTailNum());
         mFlights.add(theFlight);
     }
 
@@ -56,22 +56,21 @@ public class Itinerary {
             int flightID = theResult.getInt("flight_id");
             String tailNumber = theResult.getString("tail_num");
             String destName = theResult.getString("dest 1");
-            String startDate = theResult.getString("flight_start_Date");
+            String startDate = theResult.getString("flight_start_date");
             String departName = theResult.getString("depart 1");
             String startTime = theResult.getString("flight_start_time");
             String endTime = theResult.getString("flight_end_time");
 
-
             firstFlight = new Itinerary(price, flightID, tailNumber, departName, destName, startDate, startTime, endTime);
 
 
-            if (theResult.has("depart 2") && !theResult.has("depart 3")) {
+            if (theResult.has("depart 2")) {
                 Double price2 = theResult.getDouble("price 2");
                 int flightID2 = theResult.getInt("flight_id 2");
-                String tailNumber2 = theResult.getString("tail_num2");
-                String startDate2 = theResult.getString("start_Date 2");
+                String tailNumber2 = theResult.getString("tail_num 2");
+                String startDate2 = theResult.getString("start_date 2");
                 String departName2 = theResult.getString("depart 2");
-                String startTime2 = theResult.getString("flight_start_time2");
+                String startTime2 = theResult.getString("flight_start_time 2");
                 String endTime2 = theResult.getString("flight_end_time 2");
                 String destName2 = theResult.getString("dest 2");
 
@@ -79,11 +78,13 @@ public class Itinerary {
                 firstFlight.caculateCurrentPrice(price2);
                 firstFlight.addFlight(secondFlight);
 
-            } else {
+            }
+
+            if(theResult.has("depart 3")) {
                 Double price3 = theResult.getDouble("price 3");
                 int flightID3 = theResult.getInt("flight_id 3");
-                String tailNumber3 = theResult.getString("tail_num3");
-                String startDate3 = theResult.getString("start_Date 3");
+                String tailNumber3 = theResult.getString("tail_num 3");
+                String startDate3 = theResult.getString("start_date 3");
                 String departName3 = theResult.getString("depart 3");
                 String startTime3 = theResult.getString("flight_start_time 3");
                 String endTime3 = theResult.getString("flight_end_time 3");

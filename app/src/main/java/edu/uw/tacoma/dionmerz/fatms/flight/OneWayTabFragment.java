@@ -2,6 +2,7 @@ package edu.uw.tacoma.dionmerz.fatms.flight;
 
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ public class OneWayTabFragment extends Fragment {
     private static final String FORMAT = "MM/dd/yy";
     private static int DATE_ID = 123;
     private Calendar myCalendar = Calendar.getInstance();
+
 
 
     private SimpleDateFormat myDateFormater = new SimpleDateFormat(FORMAT, Locale.US);
@@ -82,10 +84,17 @@ public class OneWayTabFragment extends Fragment {
             }
         });
 
-        Button bt = (Button) getActivity().findViewById(R.id.button_search_one_way);
+        Button bt = (Button) view.findViewById(R.id.button_search_one_way);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent i = new Intent(getActivity().getApplication(), FlightResultActivity.class);
+                i.putExtra("depart", "Seatac Airport");
+                i.putExtra("arrive", "Phoenix Sky Harbor International Airport");
+                i.putExtra("date", "2016-12-27");
+               // i.putExtra("return", "2016-12-28");
+                startActivity(i);
 
             }
         });

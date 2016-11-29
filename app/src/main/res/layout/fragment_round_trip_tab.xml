@@ -108,7 +108,7 @@
 
 
         <Button
-            android:id="@+id/button_search_one_way"
+            android:id="@+id/button_search_round_trip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
