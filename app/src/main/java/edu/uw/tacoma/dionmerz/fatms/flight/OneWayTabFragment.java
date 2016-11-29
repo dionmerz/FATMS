@@ -81,8 +81,23 @@ public class OneWayTabFragment extends Fragment {
 
             }
         });
+
+        Button bt = (Button) getActivity().findViewById(R.id.button_search_one_way);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+
         // Inflate the layout for this fragment
         return view;
+
+
+
+
     }
 
 
