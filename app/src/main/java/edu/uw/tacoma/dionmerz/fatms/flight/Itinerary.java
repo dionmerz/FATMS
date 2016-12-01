@@ -5,13 +5,14 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by JeremyWolf on 11/28/16.
  */
 
-public class Itinerary {
+public class Itinerary implements Serializable {
     private double mPrice;
     private int mFlightNumber;
     private String mTailNum;
@@ -103,6 +104,12 @@ public class Itinerary {
 
     public double getmPrice() {
         return mPrice;
+    }
+
+    public String getmPriceString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(mPrice);
+        return sb.toString();
     }
 
     public int getmFlightNumber() {

@@ -6,11 +6,10 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,19 +42,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
         mSharedPreferences =
                 getSharedPreferences(getString(R.string.LOGIN_PREFS)
                         , Context.MODE_PRIVATE);
 
+        if (mSharedPreferences.getBoolean(getString(R.string.LOGGEDIN), false)) {
+            Intent i = new Intent(this, FlightSearchActivity.class);
+            startActivity(i);
+            finish();
 
-        mUserEmailText = (EditText) findViewById(R.id.email_text);
-        mPwdText = (EditText) findViewById(R.id.pass_text);
-        mRegisterButton = (Button) findViewById(R.id.register_button);
-        mLoginButton = (Button) findViewById(R.id.login_button);
-        mLoginButton.setOnClickListener(this);
-        mRegisterButton.setOnClickListener(this);
+        }  else {
+
+            setContentView(R.layout.activity_login);
+
+
+            mUserEmailText = (EditText) findViewById(R.id.email_text);
+            mPwdText = (EditText) findViewById(R.id.pass_text);
+            mRegisterButton = (Button) findViewById(R.id.register_button);
+            mLoginButton = (Button) findViewById(R.id.login_button);
+            mLoginButton.setOnClickListener(this);
+            mRegisterButton.setOnClickListener(this);
+        }
 
 
     }

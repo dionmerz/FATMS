@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".flight.FlightSearchActivity"></activity>
-        <activity android:name=".flight.FlightResultActivity"></activity>
+        <activity android:name=".flight.FlightSearchActivity" />
+        <activity android:name=".flight.FlightResultActivity" />
+        <activity android:name=".flight.ConfirmationActivity"></activity>
     </application>
 
 </manifest>

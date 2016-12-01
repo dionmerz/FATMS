@@ -44,7 +44,7 @@ public class OneWayTabFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_one_way_tab, container, false);
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//        getInstancetActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
         final TextView departDateText = (TextView) view.findViewById(R.id.textView_depart_date);
@@ -93,7 +93,7 @@ public class OneWayTabFragment extends Fragment {
                 i.putExtra("depart", "Seatac Airport");
                 i.putExtra("arrive", "Phoenix Sky Harbor International Airport");
                 i.putExtra("date", "2016-12-27");
-               // i.putExtra("return", "2016-12-28");
+                i.putExtra("return", "2016-12-28");
                 startActivity(i);
 
             }
