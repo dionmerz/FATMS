@@ -1,14 +1,9 @@
 package edu.uw.tacoma.dionmerz.fatms.flight;
 
-import android.graphics.pdf.PdfDocument;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.WindowManager;
 
 import edu.uw.tacoma.dionmerz.fatms.R;
@@ -21,7 +16,7 @@ public class FlightSearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_flight_search);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 

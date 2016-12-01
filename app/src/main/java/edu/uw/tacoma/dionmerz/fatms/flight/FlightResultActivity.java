@@ -1,9 +1,12 @@
 package edu.uw.tacoma.dionmerz.fatms.flight;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -16,19 +19,23 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+import edu.uw.tacoma.dionmerz.fatms.ListView.OutboundItineraryFragment;
+import edu.uw.tacoma.dionmerz.fatms.ListView.ReturnItineraryFragment;
 import edu.uw.tacoma.dionmerz.fatms.R;
 
-public class FlightResultActivity extends AppCompatActivity {
+public class FlightResultActivity extends AppCompatActivity implements OutboundItineraryFragment.OnListFragmentInteractionListener, ReturnItineraryFragment.OnListFragmentInteractionListener {
     private final static String URL
             = "https://students.washington.edu/jwolf059/FATMS.php?cmd=";
     private ArrayList<Itinerary> mItineraryListOutgoing;
     private ArrayList<Itinerary> mItineraryListReturning;
-    private boolean isReady;
+    TextView mDate;
+    Itinerary mOutGoingItineary;
+    Boolean mIsRoundTrip;
 
     public FlightResultActivity() {
         mItineraryListOutgoing = new ArrayList<>();
         mItineraryListReturning = new ArrayList<>();
-        isReady = false;
+        mIsRoundTrip = false;
     }
 
     @Override
@@ -36,39 +43,94 @@ public class FlightResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_result);
 
-
+        mIsRoundTrip = false;
         String date = getIntent().getStringExtra("date");
+        mDate = (TextView) findViewById(R.id.search_date);
+        mDate.setText("Departure date: " + date);
         String departAP = getIntent().getStringExtra("depart");
         String destinAP = getIntent().getStringExtra("arrive");
 
         // Done for both round trip and one way.
-        SearchTaskOutgoing tasknonStop = new SearchTaskOutgoing();
-        SearchTaskOutgoing taskOneStop = new SearchTaskOutgoing();
-        SearchTaskOutgoing taskTwoStop = new SearchTaskOutgoing();
         String urlNonStop = buildSeachUrl("nonstop", departAP, destinAP, date);
         String urlOneStop = buildSeachUrl("onestop", departAP, destinAP, date);
         String urlTwoStop = buildSeachUrl("twostop", departAP, destinAP, date);
-        tasknonStop.execute(urlNonStop);
-        taskOneStop.execute(urlOneStop);
-        taskTwoStop.execute(urlTwoStop);
-
-        //Done for roundtrip flights (return flights)
-        if(getIntent().getStringExtra("return") != null) {
-            String returnDate = getIntent().getStringExtra("return");
-            SearchTaskReturning tasknonStopReturn = new SearchTaskReturning();
-            SearchTaskReturning taskOneStopReturn = new SearchTaskReturning();
-            SearchTaskReturning taskTwoStopReturn = new SearchTaskReturning();
-            String urlNonStopReturn = buildSeachUrl("nonstop", destinAP, departAP, returnDate);
-            String urlOneStopReturn = buildSeachUrl("onestop", destinAP, departAP, returnDate);
-            String urlTwoStopReturn = buildSeachUrl("twostop", destinAP, departAP, returnDate);
-            tasknonStopReturn.execute(urlNonStopReturn);
-            taskOneStopReturn.execute(urlOneStopReturn);
-            taskTwoStopReturn.execute(urlTwoStopReturn);
+        try {
+            String str_result = new SearchTaskOutgoing().execute(urlNonStop).get();
+            str_result = new SearchTaskOutgoing().execute(urlOneStop).get();
+            str_result = new SearchTaskOutgoing().execute(urlTwoStop).get();
+        } catch (Exception e) {
+            Log.e("FlightResultActivity: ", e.getMessage());
         }
 
 
-        //task.execute(urlOneStop);
-        //task.execute(urlTwoStop);
+        //Done for roundtrip flights (return flights)
+        if(getIntent().getStringExtra("return") != null) {
+            mIsRoundTrip = true;
+            String returnDate = getIntent().getStringExtra("return");
+
+            String urlNonStopReturn = buildSeachUrl("nonstop", destinAP, departAP, returnDate);
+            String urlOneStopReturn = buildSeachUrl("onestop", destinAP, departAP, returnDate);
+            String urlTwoStopReturn = buildSeachUrl("twostop", destinAP, departAP, returnDate);
+            try {
+                new SearchTaskReturning().execute(urlNonStopReturn);
+                new SearchTaskReturning().execute(urlOneStopReturn);
+                String str_result = new SearchTaskReturning().execute(urlTwoStopReturn).get();
+            } catch (Exception e) {
+                Log.e("FlightResultActivity: ", e.getMessage());
+            }
+
+        }
+
+        OutboundItineraryFragment outBound = new OutboundItineraryFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("List", mItineraryListOutgoing);
+        outBound.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.activity_flight_result, outBound)
+                .addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
+    }
+
+    public void returnFlightSearch(Itinerary theItinerary) {
+        //Get Selected flight info and hold it.
+        mOutGoingItineary = theItinerary;
+
+        if(mIsRoundTrip) {
+            ReturnItineraryFragment returnFlights = new ReturnItineraryFragment();
+
+            Bundle args = new Bundle();
+            mDate.setText("Departure date: " + getIntent().getStringExtra("return"));
+            args.putSerializable("List", mItineraryListReturning);
+            args.putBoolean("isReturn", true);
+            returnFlights.setArguments(args);
+            FragmentTransaction transaction = getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.activity_flight_result, returnFlights)
+                    .addToBackStack(null);
+
+            // Commit the transaction
+            transaction.commit();
+        } else {
+            goToConfirmation(null);
+        }
+    }
+
+    public void goToConfirmation(Itinerary theItinerary) {
+        //Get Selected flight info and hold it.
+
+        Intent i = new Intent(this, ConfirmationActivity.class);
+        if (theItinerary != null) {
+            i.putExtra("return", theItinerary);
+        }
+        i.putExtra("outgoing", mOutGoingItineary);
+        startActivity(i);
+
+
+
+
     }
 
     private String buildSeachUrl(String theType, String theDeparture, String theDestination, String theDate) {
@@ -95,7 +157,25 @@ public class FlightResultActivity extends AppCompatActivity {
         return sb.toString();
     }
 
-    private class SearchTaskOutgoing extends AsyncTask<String, Void, String> {
+    @Override
+    public void onListFragmentInteraction(Itinerary theItinerary) {
+
+
+
+        ItineraryDetails itineraryDetails = new ItineraryDetails();
+        Bundle args = new Bundle();
+        args.putSerializable("itinerary", theItinerary);
+        itineraryDetails.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_flight_result, itineraryDetails)
+                .addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
+    }
+
+    public class SearchTaskOutgoing extends AsyncTask<String, Void, String> {
 
 
         @Override
@@ -153,28 +233,6 @@ public class FlightResultActivity extends AppCompatActivity {
                 for(int i = 0; i < jsonArray.length(); i++) {
                     Itinerary ity = Itinerary.flightJSONParse(jsonArray.getJSONObject(i));
                     mItineraryListOutgoing.add(ity);
-
-                }
-
-                for(Itinerary ity : mItineraryListOutgoing) {
-                    System.out.println("");
-                    System.out.println("\nFlight Outgoing");
-                    System.out.println("Flight Size: " + ity.getmFlights().size());
-                    System.out.println("Arrival Airport: " + ity.getmArivalAPName());
-                    System.out.println("Arrival Time: " + ity.getmArrivalTime());
-                    System.out.println("Departure Airport: "+ ity.getmDepartureAPName());
-                    System.out.println("Departure Time: " + ity.getmDepartureTime());
-                    System.out.println("Flight Number: " + ity.getmFlightNumber());
-                    for (Itinerary lit : ity.getmFlights()) {
-                        System.out.println("");
-                        System.out.println("Flight in side");
-                        System.out.println("Flight Size: " + lit.getmFlights().size());
-                        System.out.println("Arrival Airport: " + lit.getmArivalAPName());
-                        System.out.println("Arrival Time: " + lit.getmArrivalTime());
-                        System.out.println("Departure Airport: "+ lit.getmDepartureAPName());
-                        System.out.println("Departure Time: " + lit.getmDepartureTime());
-                        System.out.println("Flight Number: " + lit.getmFlightNumber());
-                    }
 
                 }
 
