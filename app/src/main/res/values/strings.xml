@@ -9,4 +9,10 @@
     <string name="text_register_title">Register</string>
 
     <string name="action_menu_hamburger">STUFF</string>
+
+
+
+    <!--REPORTS-->
+
+    <string name="non_us_report">Name of Non-US who traveled one way.</string>
 </resources>

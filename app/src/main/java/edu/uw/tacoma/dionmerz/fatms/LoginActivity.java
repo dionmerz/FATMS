@@ -253,7 +253,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
 
-                } else {
+                }
+
+                else if (status.equals("emp")) {
+                    mSharedPreferences.edit()
+                            .putBoolean(getString(R.string.LOGGEDIN), true)
+                            .commit();
+
+
+                    Toast.makeText(getApplication(), "Logged in as Employee", Toast.LENGTH_LONG).show();
+
+
+                    Intent i = new Intent(getApplication(), ReportsActivity.class);
+                    startActivity(i);
+
+                }else {
                     Toast.makeText(getApplicationContext(), "Login email or password invalid... "
                             , Toast.LENGTH_LONG)
                             .show();

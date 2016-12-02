@@ -1,5 +1,6 @@
 package edu.uw.tacoma.dionmerz.fatms.flight;
 
+import android.app.ActionBar;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
@@ -47,6 +48,9 @@ public class FlightSearchActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+
+
 
         viewPager.setAdapter(flightAdapter);
 

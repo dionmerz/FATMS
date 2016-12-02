@@ -6,7 +6,7 @@
         android:id="@+id/action_hamburger"
         android:icon="@android:drawable/ic_menu_more"
         android:title="@string/action_menu_hamburger"
-        app:showAsAction="always">
+        app:showAsAction="ifRoom">
 
 
         <menu>
