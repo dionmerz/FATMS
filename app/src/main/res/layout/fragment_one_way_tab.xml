@@ -16,31 +16,21 @@
         >
 
 
-        <AutoCompleteTextView
-            android:hint="Departure Location"
-            android:textAlignment="center"
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView_departure"
-            android:background="@drawable/text_style"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:textSize="24dp"
-            android:layout_weight="1" />
+            android:id="@+id/departure_spinner_oneway"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="19dp" />
 
-        <AutoCompleteTextView
-            android:hint="Destination Location"
-            android:textAlignment="center"
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView_destination"
-            android:background="@drawable/text_style"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:textSize="24dp"
-            android:layout_weight="1" />
+            android:id="@+id/arrival_spinner_oneway"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="19dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

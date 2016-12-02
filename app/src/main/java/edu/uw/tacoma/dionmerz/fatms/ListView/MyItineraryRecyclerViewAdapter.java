@@ -45,7 +45,7 @@ public class MyItineraryRecyclerViewAdapter extends RecyclerView.Adapter<MyItine
         holder.mItinerary = mItineraryList.get(position);
         trip.append(mItineraryList.get(position).getmDepartureAPName() + "    to    ");
         holder.mdepartureTime.setText("Departure Time: " +mItineraryList.get(position).getmDepartureTime());
-        holder.mCost.setText("Price: " + mItineraryList.get(position).getmPriceString());
+        holder.mCost.setText("Price: $" + mItineraryList.get(position).getmPriceString());
         holder.mNumberOfStops.setText("Layovers: " + sb.toString());
 
         if (stops == 0) {

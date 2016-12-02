@@ -104,6 +104,6 @@ public class ReturnItineraryFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Itinerary theItinerary);
+        void onListFragmentInteraction(Itinerary theItinerary, Boolean isReturn);
     }
 }
