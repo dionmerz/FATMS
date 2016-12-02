@@ -67,7 +67,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button_departure_date"
+                        android:id="@+id/button_departure_date_round_trip"
                         android:layout_width="match_parent"
                         android:layout_height="37dp"
                         android:layout_marginRight="5dp"
@@ -77,7 +77,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView_depart_date"
+                        android:id="@+id/textView_depart_date_round_trip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
@@ -99,7 +99,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/button_return_date"
+                        android:id="@+id/button_return_date_round_trip"
                         android:layout_width="match_parent"
                         android:layout_height="37dp"
                         android:layout_marginRight="5dp"
@@ -109,7 +109,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView_return_date"
+                        android:id="@+id/textView_return_date_round_trip"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"

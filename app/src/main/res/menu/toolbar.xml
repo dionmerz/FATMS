@@ -12,7 +12,8 @@
         <menu>
             <item
                 android:id="@+id/history_menu"
-                android:title="Flight History" />
+                android:title="Flight History"
+                android:icon="@android:drawable/ic_menu_my_calendar"/>
             <item
                 android:id="@+id/logout_menu"
                 android:title="Log Out"
