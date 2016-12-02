@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="edu.uw.tacoma.dionmerz.fatms.ListView.OutboundItineraryFragment"
+    tools:context="edu.uw.tacoma.dionmerz.fatms.listView.OutboundItineraryFragment"
     tools:listitem="@layout/fragment_itinerary"
     android:background="#e1dfdd"
     android:dividerHeight="1dip" />
