@@ -1,6 +1,8 @@
 package edu.uw.tacoma.dionmerz.fatms.flight;
 
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +13,10 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -23,7 +28,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 import edu.uw.tacoma.dionmerz.fatms.R;
 
@@ -41,9 +49,14 @@ public class RoundTripTabFragment extends Fragment implements AdapterView.OnItem
     private String mArrivalAP;
     private String mDate;
     private String mReturnDate;
+    private static final String FORMAT = "yyyy/MM/dd";
+    private Calendar myCalendar = Calendar.getInstance();
+
+    private final SimpleDateFormat myDateFormater = new SimpleDateFormat(FORMAT, Locale.US);
 
     public RoundTripTabFragment() {
         mAirportList = new ArrayList<>();
+        mAirportList.add("Select Airport");
     }
 
 
@@ -77,13 +90,108 @@ public class RoundTripTabFragment extends Fragment implements AdapterView.OnItem
 
         // Build the pub list spinner
         mArrivalSpinner = (Spinner) mView.findViewById(R.id.arrival_spinner_round);
-        mDepartureSpinner.setOnItemSelectedListener(this);
+        mArrivalSpinner.setOnItemSelectedListener(this);
 
 
         //ArrayAdapter<String> airports = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, mAirportList);
         airports.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mArrivalSpinner.setAdapter(airports);
         mArrivalSpinner.setSelection(0);
+
+
+        final TextView departDateText = (TextView) mView.findViewById(R.id.textView_depart_date_round_trip);
+
+
+        final DatePickerDialog.OnDateSetListener dateDialog = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                departDateText.setText(myDateFormater.format(myCalendar.getTime()));
+
+
+            }
+
+        };
+
+        Button departDateButton = (Button) mView.findViewById(R.id.button_departure_date_round_trip);
+
+        departDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(), R.style.DateDialogTheme,
+                        dateDialog, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+
+
+
+                datePickerDialog.show();
+
+
+            }
+        });
+
+        final TextView returnDateText = (TextView) mView.findViewById(R.id.textView_return_date_round_trip);
+
+        final DatePickerDialog.OnDateSetListener returnDateDialog = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                returnDateText.setText(myDateFormater.format(myCalendar.getTime()));
+
+
+            }
+
+        };
+
+
+        Button returnDateButton = (Button) mView.findViewById(R.id.button_return_date_round_trip);
+
+        returnDateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(), R.style.DateDialogTheme,
+                        returnDateDialog, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH));
+
+
+
+                datePickerDialog.show();
+
+
+            }
+        });
+
+        Button bt = (Button) mView.findViewById(R.id.button_search_round_trip);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDate = (String) departDateText.getText();
+                mReturnDate = (String) returnDateText.getText();
+                Intent i = new Intent(getActivity().getApplication(), FlightResultActivity.class);
+                i.putExtra("depart", mDepartureAP);
+                i.putExtra("arrive", mArrivalAP);
+                i.putExtra("date", mDate);
+                i.putExtra("return", mReturnDate);
+
+
+                startActivity(i);
+
+            }
+        });
 
         return mView;
     }
