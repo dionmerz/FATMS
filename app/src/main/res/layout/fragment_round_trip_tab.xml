@@ -6,119 +6,139 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
 
-        <AutoCompleteTextView
-            android:id="@+id/textView_departure"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/text_style"
-            android:hint="Departure Location"
-            android:textAlignment="center"
-            android:textSize="24dp" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimaryDark">
 
-        <AutoCompleteTextView
-            android:id="@+id/textView_destination"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:background="@drawable/text_style"
-            android:hint="Destination Location"
-            android:textAlignment="center"
-            android:textSize="24dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20sp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button_departure_date"
-                android:layout_width="match_parent"
-                android:layout_height="37dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="Departure Date"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/textView_depart_date"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/text_style"
-                android:gravity="center_horizontal"
-                android:textSize="24sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20sp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button_return_date"
-                android:layout_width="match_parent"
-                android:layout_height="37dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="Return Date"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/textView_return_date"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/text_style"
-                android:gravity="center_horizontal"
-                android:textSize="24sp" />
-
-        </LinearLayout>
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="vertical">
 
 
-        <Button
-            android:id="@+id/button_search_round_trip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginBottom="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/text_style"
-            android:text="SEARCH"
+                <AutoCompleteTextView
+                    android:id="@+id/textView_departure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/text_style"
+                    android:hint="Departure Location"
+                    android:textAlignment="center"
+                    android:textSize="24dp" />
 
-            />
+                <AutoCompleteTextView
+                    android:id="@+id/textView_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/text_style"
+                    android:hint="Destination Location"
+                    android:textAlignment="center"
+                    android:textSize="24dp" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_departure_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="Departure Date"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textView_depart_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/text_style"
+                        android:gravity="center_horizontal"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_return_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="37dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:text="Return Date"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/textView_return_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/text_style"
+                        android:gravity="center_horizontal"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/button_search_round_trip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/text_style"
+                    android:text="SEARCH"
+
+                    />
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
 
     </LinearLayout>
 

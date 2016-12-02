@@ -28,6 +28,7 @@ public class RoundTripTabFragment extends Fragment {
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_round_trip_tab, container, false);
     }

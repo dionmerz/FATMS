@@ -44,7 +44,7 @@ public class OneWayTabFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_one_way_tab, container, false);
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-//        getInstancetActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
         final TextView departDateText = (TextView) view.findViewById(R.id.textView_depart_date);

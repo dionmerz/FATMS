@@ -1,22 +1,38 @@
 package edu.uw.tacoma.dionmerz.fatms.flight;
 
+import android.app.IntentService;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.WindowManager;
 
+import edu.uw.tacoma.dionmerz.fatms.LoginActivity;
 import edu.uw.tacoma.dionmerz.fatms.R;
 
 public class FlightSearchActivity extends AppCompatActivity {
+
+
+    SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_search);
 
+        mSharedPreferences =
+                getSharedPreferences(getString(R.string.LOGIN_PREFS)
+                        , Context.MODE_PRIVATE);
+
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-//        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
 
@@ -28,6 +44,9 @@ public class FlightSearchActivity extends AppCompatActivity {
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final FlightTabAdapter flightAdapter = new FlightTabAdapter(getSupportFragmentManager(),
                 tabLayout.getTabCount());
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
         viewPager.setAdapter(flightAdapter);
 
@@ -50,5 +69,45 @@ public class FlightSearchActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        switch (id) {
+
+            case R.id.logout_menu:
+
+                SharedPreferences.Editor edit = mSharedPreferences.edit();
+
+                edit.putBoolean(getString(R.string.LOGGEDIN), false);
+                edit.apply();
+
+                Intent i = new Intent(this, LoginActivity.class);
+
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                startActivity(i);
+
+                finish();
+                break;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        return false;
     }
 }
