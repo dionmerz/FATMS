@@ -45,7 +45,7 @@ public class MyReturnItineraryRecyclerViewAdapter extends RecyclerView.Adapter<M
         holder.mItinerary = mItineraryList.get(position);
         trip.append(mItineraryList.get(position).getmDepartureAPName() + "    to    ");
         holder.mdepartureTime.setText("Departure Time: " +mItineraryList.get(position).getmDepartureTime());
-        holder.mCost.setText("Price: " + mItineraryList.get(position).getmPriceString());
+        holder.mCost.setText("Price: $" + mItineraryList.get(position).getmPriceString());
         holder.mNumberOfStops.setText("Layovers: " + sb.toString());
 
         if (stops == 0) {
@@ -69,7 +69,7 @@ public class MyReturnItineraryRecyclerViewAdapter extends RecyclerView.Adapter<M
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItinerary);
+                    mListener.onListFragmentInteraction(holder.mItinerary, true);
                 }
             }
         });

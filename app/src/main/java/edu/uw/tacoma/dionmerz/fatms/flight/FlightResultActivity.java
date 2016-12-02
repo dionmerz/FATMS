@@ -105,7 +105,6 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
             Bundle args = new Bundle();
             mDate.setText("Departure date: " + getIntent().getStringExtra("return"));
             args.putSerializable("List", mItineraryListReturning);
-            args.putBoolean("isReturn", true);
             returnFlights.setArguments(args);
             FragmentTransaction transaction = getSupportFragmentManager()
                     .beginTransaction()
@@ -154,6 +153,7 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
             Toast.makeText(this, "Something wrong with the url" + e.getMessage(), Toast.LENGTH_LONG)
                     .show();
         }
+        Log.i("Url: ", sb.toString());
         return sb.toString();
     }
 
@@ -165,6 +165,23 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
         ItineraryDetails itineraryDetails = new ItineraryDetails();
         Bundle args = new Bundle();
         args.putSerializable("itinerary", theItinerary);
+        itineraryDetails.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_flight_result, itineraryDetails)
+                .addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
+    }
+
+    @Override
+    public void onListFragmentInteraction(Itinerary theItinerary, Boolean isReturn) {
+
+        ItineraryDetails itineraryDetails = new ItineraryDetails();
+        Bundle args = new Bundle();
+        args.putSerializable("itinerary", theItinerary);
+        args.putBoolean("isReturn", true);
         itineraryDetails.setArguments(args);
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction()
@@ -240,7 +257,9 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
 
 
             } catch (JSONException e) {
-                Toast.makeText(getApplicationContext(), "Something wrong with the data" +
+                Log.i("It went wrong here: ", "Yep sure did");
+                Log.e("JSON Error: ", e.getMessage());
+                Toast.makeText(getApplicationContext(), "Something wrong with the data: " +
                         e.getMessage(), Toast.LENGTH_LONG).show();
             }
         }

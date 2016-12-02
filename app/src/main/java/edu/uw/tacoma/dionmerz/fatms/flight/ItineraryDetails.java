@@ -48,8 +48,9 @@ public class ItineraryDetails extends Fragment {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if(getArguments().getBoolean("isReturn")) {
+                Boolean isReturn = getArguments().getBoolean("isReturn");
+                System.out.println("Boolean isReturn: " + isReturn);
+                if(isReturn) {
                     ((FlightResultActivity) getActivity()).goToConfirmation(mItinerary);
                 } else {
                     ((FlightResultActivity) getActivity()).returnFlightSearch(mItinerary);

@@ -106,4 +106,6 @@ public class OutboundItineraryFragment extends Fragment {
         // TODO: Update argument type and name
         void onListFragmentInteraction(Itinerary theItinerary);
     }
+
+
 }
