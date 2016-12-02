@@ -30,7 +30,8 @@
             android:name=".transaction.ConfirmationActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".history.HistoryActivity" />
-        <activity android:name=".ReportsActivity"></activity>
+        <activity android:name=".ReportsActivity" />
+        <activity android:name=".ReportResultsActivity"></activity>
     </application>
 
 </manifest>
