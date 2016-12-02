@@ -1,4 +1,4 @@
-package edu.uw.tacoma.dionmerz.fatms.ListView;
+package edu.uw.tacoma.dionmerz.fatms.listView;
 
 import android.content.Context;
 import android.os.Bundle;

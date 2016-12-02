@@ -1,4 +1,4 @@
-package edu.uw.tacoma.dionmerz.fatms.ListView;
+package edu.uw.tacoma.dionmerz.fatms.listView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import edu.uw.tacoma.dionmerz.fatms.R;
-import edu.uw.tacoma.dionmerz.fatms.ListView.ReturnItineraryFragment.OnListFragmentInteractionListener;
+import edu.uw.tacoma.dionmerz.fatms.listView.ReturnItineraryFragment.OnListFragmentInteractionListener;
 import edu.uw.tacoma.dionmerz.fatms.flight.Itinerary;
 
 /**

@@ -27,7 +27,7 @@
             android:name=".flight.FlightResultActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".flight.ConfirmationActivity"
+            android:name=".transaction.ConfirmationActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".history.HistoryActivity" />
         <activity android:name=".ReportsActivity"></activity>

@@ -1,7 +1,5 @@
 package edu.uw.tacoma.dionmerz.fatms.flight;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,9 +19,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import edu.uw.tacoma.dionmerz.fatms.ListView.OutboundItineraryFragment;
-import edu.uw.tacoma.dionmerz.fatms.ListView.ReturnItineraryFragment;
+import edu.uw.tacoma.dionmerz.fatms.listView.OutboundItineraryFragment;
+import edu.uw.tacoma.dionmerz.fatms.listView.ReturnItineraryFragment;
 import edu.uw.tacoma.dionmerz.fatms.R;
+import edu.uw.tacoma.dionmerz.fatms.transaction.ConfirmationActivity;
 
 public class FlightResultActivity extends AppCompatActivity implements OutboundItineraryFragment.OnListFragmentInteractionListener, ReturnItineraryFragment.OnListFragmentInteractionListener {
     private final static String URL
