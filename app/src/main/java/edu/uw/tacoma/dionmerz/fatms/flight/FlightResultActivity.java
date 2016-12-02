@@ -1,5 +1,7 @@
 package edu.uw.tacoma.dionmerz.fatms.flight;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -87,8 +89,7 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
         outBound.setArguments(args);
         FragmentTransaction transaction = getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.activity_flight_result, outBound)
-                .addToBackStack(null);
+                .add(R.id.activity_flight_result, outBound);
 
         // Commit the transaction
         transaction.commit();
@@ -107,8 +108,7 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
             returnFlights.setArguments(args);
             FragmentTransaction transaction = getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.activity_flight_result, returnFlights)
-                    .addToBackStack(null);
+                    .replace(R.id.activity_flight_result, returnFlights);
 
             // Commit the transaction
             transaction.commit();
@@ -198,6 +198,8 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+
         }
 
         @Override
@@ -270,6 +272,7 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
         }
 
         @Override

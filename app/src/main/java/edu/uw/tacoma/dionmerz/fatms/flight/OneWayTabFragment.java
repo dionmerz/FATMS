@@ -71,7 +71,7 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
         View mView = inflater.inflate(R.layout.fragment_one_way_tab, container, false);
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-//        getInstancetActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
         final TextView departDateText = (TextView) mView.findViewById(R.id.textView_depart_date);

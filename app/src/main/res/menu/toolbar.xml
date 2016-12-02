@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_hamburger"
+        android:icon="@android:drawable/ic_menu_more"
+        android:title="@string/action_menu_hamburger"
+        app:showAsAction="ifRoom">
+
+
+        <menu>
+            <item
+                android:id="@+id/history_menu"
+                android:title="Flight History"
+                android:icon="@android:drawable/ic_menu_my_calendar"/>
+            <item
+                android:id="@+id/logout_menu"
+                android:title="Log Out"
+                android:icon="@android:drawable/ic_delete"/>
+        </menu>
+    </item>
+
+</menu>
