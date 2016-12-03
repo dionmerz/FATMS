@@ -4,9 +4,11 @@
     <string name="LOGIN_PREFS">edu.uw.tacoma.dionmerz.fatms.PREFS</string>
 
     <string name="LOGGEDIN">loggedin</string>
+    <string name="current_user">current_user</string>
 
 
     <string name="text_register_title">Register</string>
+    <string name="text_edit_account_title">Edit Account</string>
 
     <string name="action_menu_hamburger">STUFF</string>
 

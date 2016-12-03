@@ -24,6 +24,7 @@ import edu.uw.tacoma.dionmerz.fatms.listView.ReturnItineraryFragment;
 import edu.uw.tacoma.dionmerz.fatms.R;
 import edu.uw.tacoma.dionmerz.fatms.transaction.ConfirmationActivity;
 
+
 public class FlightResultActivity extends AppCompatActivity implements OutboundItineraryFragment.OnListFragmentInteractionListener, ReturnItineraryFragment.OnListFragmentInteractionListener {
     private final static String URL
             = "https://students.washington.edu/jwolf059/FATMS.php?cmd=";

@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button mRegisterButton;
     private EditText mUserEmailText;
     private EditText mPwdText;
+    private String mCurrentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +104,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         try {
 
             String userID = mUserEmailText.getText().toString();
+            mCurrentUser = userID;
             sb.append("&email=");
             sb.append(userID);
 
@@ -242,7 +244,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (status.equals("success")) {
                     mSharedPreferences.edit()
                             .putBoolean(getString(R.string.LOGGEDIN), true)
-                            .commit();
+                            .apply();
+
+                    mSharedPreferences.edit()
+                            .putString(getString(R.string.current_user), mCurrentUser)
+                            .apply();
 
 
                     Toast.makeText(getApplication(), "Logged in Successful", Toast.LENGTH_LONG).show();
