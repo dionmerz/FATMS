@@ -12,5 +12,9 @@
         <item name="colorAccent">@color/date_color</item>
     </style>
 
+    <style name="spinner_style">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 
 </resources>

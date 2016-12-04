@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
     tools:context="edu.uw.tacoma.dionmerz.fatms.transaction.ConfirmationDetailsFragment">
 
     <LinearLayout
@@ -47,16 +48,12 @@
         android:id="@+id/seat_spinner_leg1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="19dp" />
 
     <Spinner
         android:id="@+id/meal_spinner_leg1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="19dp" />
     </LinearLayout>
 

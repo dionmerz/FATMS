@@ -35,6 +35,7 @@ import java.net.URL;
 import edu.uw.tacoma.dionmerz.fatms.LoginActivity;
 import edu.uw.tacoma.dionmerz.fatms.R;
 import edu.uw.tacoma.dionmerz.fatms.RegisterFragment;
+import edu.uw.tacoma.dionmerz.fatms.history.HistoryActivity;
 
 public class FlightSearchActivity extends AppCompatActivity {
 
@@ -172,6 +173,11 @@ public class FlightSearchActivity extends AppCompatActivity {
                 mDialog.show();
 
 
+                break;
+
+            case R.id.history_menu:
+                Intent histIntent = new Intent(getApplicationContext(), HistoryActivity.class);
+                startActivity(histIntent);
                 break;
 
 

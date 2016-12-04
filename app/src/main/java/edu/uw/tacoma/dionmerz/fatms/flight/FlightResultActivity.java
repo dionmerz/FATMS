@@ -271,6 +271,7 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
 
         @Override
         protected void onPreExecute() {
+            
             super.onPreExecute();
 
         }
