@@ -31,7 +31,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".history.HistoryActivity" />
         <activity android:name=".ReportsActivity" />
-        <activity android:name=".ReportResultsActivity"></activity>
+        <activity android:name=".ReportResultsActivity" />
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>

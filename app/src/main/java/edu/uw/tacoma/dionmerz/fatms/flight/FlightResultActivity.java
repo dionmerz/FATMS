@@ -45,6 +45,8 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_result);
 
+
+
         mIsRoundTrip = false;
         String date = getIntent().getStringExtra("date");
         mDate = (TextView) findViewById(R.id.search_date);
