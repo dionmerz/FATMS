@@ -22,6 +22,7 @@ import edu.uw.tacoma.dionmerz.fatms.R;
 import edu.uw.tacoma.dionmerz.fatms.flight.Itinerary;
 
 public class ConfirmationActivity extends AppCompatActivity {
+
     private ArrayList<Itinerary> mFlights;
     private final static String URL
             = "https://students.washington.edu/jwolf059/FATMS.php?cmd=seats";
@@ -90,6 +91,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         Bundle args = new Bundle();
         args.putSerializable("leg", returning);
         args.putBoolean("isRoundTrip", false);
+        args.putBoolean("roundTrip", true);
         args.putSerializable("selection", theSelections);
         args.putSerializable("flight1_seats", mSeatsFlight1);
         args.putSerializable("flight2_seats", mSeatsFlight2);
@@ -107,6 +109,10 @@ public class ConfirmationActivity extends AppCompatActivity {
     public void purchaseFlight(HashMap<Integer, ArrayList<String>> theSelections) {
         Intent i = new Intent(getApplicationContext(), PurchaseFlightActivity.class);
         i.putExtra("selections", theSelections);
+
+        if (getIntent().getSerializableExtra("return") != null) {
+            i.putExtra("isRoundTrip", true);
+        }
         startActivity(i);
     }
 

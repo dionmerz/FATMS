@@ -312,20 +312,20 @@ public class ConfirmationDetailsFragment extends Fragment implements AdapterView
 
         if(adapterView.getId() == R.id.seat_spinner_leg1) {
             ArrayList<String> list = mSelections.get(mItinerary.getmFlightNumber());
-            list.add(0, mSeatsFlight1.get(i));
+            list.add(0, mSeatsFlight1.get(i+1));
 //            Log.i("Seat Flight1: ", mSeatsFlight1.get(i));
 
 
         } else if(adapterView.getId() == R.id.seat_spinner_leg2) {
             ArrayList<String> list = mSelections.get(mItinerary.getmFlights().get(0).getmFlightNumber());
-            list.add(0, mSeatsFlight2.get(i));
+            list.add(0, mSeatsFlight2.get(i+1));
             Log.i("Seat Flight2: ", mSeatsFlight2.get(i));
 
 
 
         } else if(adapterView.getId() == R.id.seat_spinner_leg3) {
             ArrayList<String> list = mSelections.get(mItinerary.getmFlights().get(1).getmFlightNumber());
-            list.add(0, mSeatsFlight3.get(i));
+            list.add(0, mSeatsFlight3.get(i+1));
             Log.i("Seat Flight2: ", mSeatsFlight2.get(i));
 
 

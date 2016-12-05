@@ -71,8 +71,7 @@ public class ItineraryDetails extends Fragment {
         arrivalAP.setText(mItinerary.getmArivalAPName());
         TextView arrivalTime = (TextView) theView.findViewById(R.id.arrival_time);
         arrivalTime.setText(mItinerary.getmArrivalTime());
-        TextView departureDate = (TextView) theView.findViewById(R.id.departure_date);
-        departureDate.setText(mItinerary.getmDate());
+
 
 
 
@@ -87,8 +86,7 @@ public class ItineraryDetails extends Fragment {
         arrivalAP.setText(mItinerary.getmArivalAPName());
         TextView arrivalTime = (TextView) theView.findViewById(R.id.arrival_time_leg1);
         arrivalTime.setText(mItinerary.getmArrivalTime());
-        TextView departureDate = (TextView) theView.findViewById(R.id.departure_date_leg1);
-        departureDate.setText(mItinerary.getmDate());
+
 
         Itinerary secondFlight = mItinerary.getmFlights().get(0);
         TextView departureAP2 = (TextView) theView.findViewById(R.id.departure_airport_leg2);
@@ -111,8 +109,7 @@ public class ItineraryDetails extends Fragment {
         arrivalAP.setText(mItinerary.getmArivalAPName());
         TextView arrivalTime = (TextView) theView.findViewById(R.id.arrival_time_leg1);
         arrivalTime.setText(mItinerary.getmArrivalTime());
-        TextView departureDate = (TextView) theView.findViewById(R.id.departure_date_leg1);
-        departureDate.setText(mItinerary.getmDate());
+
 
         Itinerary secondFlight = mItinerary.getmFlights().get(0);
         TextView departureAP2 = (TextView) theView.findViewById(R.id.departure_airport_leg2);
