@@ -39,9 +39,8 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
 
@@ -49,21 +48,20 @@
         android:id="@+id/seat_spinner_leg1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        android:layout_marginTop="19dp" />
 
     <Spinner
         android:id="@+id/meal_spinner_leg1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_marginTop="19dp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/continue_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="bottom"
         android:text="continue" />
 
 </LinearLayout>

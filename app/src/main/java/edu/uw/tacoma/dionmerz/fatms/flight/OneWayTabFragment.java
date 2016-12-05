@@ -2,6 +2,7 @@ package edu.uw.tacoma.dionmerz.fatms.flight;
 
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -59,6 +60,7 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
     private SimpleDateFormat myDateFormater = new SimpleDateFormat(FORMAT, Locale.US);
 
     public OneWayTabFragment() {
+
         mAirportList = new ArrayList<>();
         mAirportList.add("Select Aiport");
         }
@@ -223,7 +225,6 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
          */
         @Override
         protected void onPostExecute(String result) {
-
             Log.d("PostExecute: ", result);
             // Something wrong with the network or the URL.
             try {

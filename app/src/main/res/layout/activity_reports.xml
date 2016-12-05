@@ -5,6 +5,7 @@
     android:id="@+id/activity_reports"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     tools:context="edu.uw.tacoma.dionmerz.fatms.ReportsActivity">
 
@@ -41,9 +42,44 @@
 
 
         <Button
+            android:id="@+id/button_report_nonUS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="REPORT 1"
+            android:layout_gravity="center_horizontal"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/popular_flight_report" />
+
+
+        <Button
+            android:id="@+id/button_report_popular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REPORT 2"
+            android:layout_gravity="center_horizontal"/>
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/string_add_flight" />
+
+
+        <Button
+            android:id="@+id/button_add_flight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Flight"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 

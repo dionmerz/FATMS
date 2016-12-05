@@ -24,6 +24,7 @@ import edu.uw.tacoma.dionmerz.fatms.listView.ReturnItineraryFragment;
 import edu.uw.tacoma.dionmerz.fatms.R;
 import edu.uw.tacoma.dionmerz.fatms.transaction.ConfirmationActivity;
 
+
 public class FlightResultActivity extends AppCompatActivity implements OutboundItineraryFragment.OnListFragmentInteractionListener, ReturnItineraryFragment.OnListFragmentInteractionListener {
     private final static String URL
             = "https://students.washington.edu/jwolf059/FATMS.php?cmd=";
@@ -43,6 +44,8 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flight_result);
+
+
 
         mIsRoundTrip = false;
         String date = getIntent().getStringExtra("date");
@@ -270,6 +273,7 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
 
         @Override
         protected void onPreExecute() {
+            
             super.onPreExecute();
 
         }

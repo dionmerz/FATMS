@@ -4,9 +4,11 @@
     <string name="LOGIN_PREFS">edu.uw.tacoma.dionmerz.fatms.PREFS</string>
 
     <string name="LOGGEDIN">loggedin</string>
+    <string name="current_user">current_user</string>
 
 
     <string name="text_register_title">Register</string>
+    <string name="text_edit_account_title">Edit Account</string>
 
     <string name="action_menu_hamburger">STUFF</string>
 
@@ -14,6 +16,8 @@
     <!--REPORTS-->
 
     <string name="non_us_report">Name of Non-US who traveled one way.</string>
+    <string name="popular_flight_report">Popular flights by passenger count.</string>
+    <string name="string_add_flight">Add Flight</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
