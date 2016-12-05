@@ -130,7 +130,6 @@ public class EditActivity extends AppCompatActivity {
     }
 
     public void update(String url) {
-        Log.i("URL", url);
         UpdateTask task = new UpdateTask();
         task.execute(new String[]{url.toString()});
     }
