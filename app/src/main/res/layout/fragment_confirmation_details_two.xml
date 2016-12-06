@@ -188,11 +188,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/select_flight_2"
+        android:id="@+id/continue_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select Flight"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom"
+        android:text="continue" />
 </LinearLayout>
 
 </ScrollView>
