@@ -170,9 +170,6 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
         } else if(adapterView.getId() == R.id.departure_spinner_oneway) {
             mDepartureAP = mAirportList.get(i);
         }
-
-        System.out.println(mArrivalAP);
-        System.out.println(mDepartureAP);
     }
 
     @Override

@@ -32,7 +32,9 @@
         <activity android:name=".history.HistoryActivity" />
         <activity android:name=".ReportsActivity" />
         <activity android:name=".ReportResultsActivity" />
-        <activity android:name=".EditActivity"></activity>
+        <activity android:name=".EditActivity" />
+        <activity android:name=".transaction.PurchaseFlightActivity" />
+        <activity android:name=".FinishedActivity"></activity>
     </application>
 
 </manifest>

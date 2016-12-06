@@ -107,6 +107,7 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
             Bundle args = new Bundle();
             mDate.setText("Departure date: " + getIntent().getStringExtra("return"));
             args.putSerializable("List", mItineraryListReturning);
+            args.putBoolean("isRoundTrip", true);
             returnFlights.setArguments(args);
             FragmentTransaction transaction = getSupportFragmentManager()
                     .beginTransaction()
