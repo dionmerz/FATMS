@@ -4,33 +4,32 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/background"
     tools:context="edu.uw.tacoma.dionmerz.fatms.LoginActivity">
-
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_marginTop="100dp"
         android:gravity="center_horizontal"
-        android:layout_marginTop="100dp">
+        android:orientation="vertical">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/email_text"
-        android:hint="Login Email..." />
+        <EditText
+            android:id="@+id/email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Login Email..."
+            android:inputType="textEmailAddress" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/pass_text"
-        android:hint="Password..." />
+        <EditText
+            android:id="@+id/pass_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Password..."
+            android:inputType="textPassword" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -39,28 +38,33 @@
 
 
             <Button
-                android:text="Login"
+                android:id="@+id/login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
-                android:id="@+id/login_button" />
+                android:text="Login"
+                android:background="@drawable/button_shape"/>
+
 
             <Button
-                android:text="Register"
+                android:id="@+id/register_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:id="@+id/register_button" />
+                android:background="@drawable/button_shape"
+                android:text="Register"/>
+
         </LinearLayout>
 
 
         <Button
-            android:text="Continue as Guest"
+            android:id="@+id/guest_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="22dp"
-            android:id="@+id/guest_button" />
+            android:text="Continue as Guest"
+            android:background="@drawable/button_shape"/>
 
 
     </LinearLayout>

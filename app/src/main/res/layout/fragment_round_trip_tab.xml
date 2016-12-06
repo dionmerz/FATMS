@@ -62,9 +62,11 @@
                         android:layout_height="37dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:gravity="center_horizontal"
+                        android:gravity="center"
                         android:text="Departure Date"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:background="@drawable/button_shape"
+                        />
 
                     <TextView
                         android:id="@+id/textView_depart_date_round_trip"
@@ -75,7 +77,8 @@
                         android:layout_weight="1"
                         android:background="@drawable/text_style"
                         android:gravity="center_horizontal"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        />
 
                 </LinearLayout>
 
@@ -94,9 +97,11 @@
                         android:layout_height="37dp"
                         android:layout_marginRight="5dp"
                         android:layout_weight="1"
-                        android:gravity="center_horizontal"
+                        android:gravity="center"
                         android:text="Return Date"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:background="@drawable/button_shape"
+                        />
 
                     <TextView
                         android:id="@+id/textView_return_date_round_trip"
@@ -117,10 +122,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:gravity="center"
                     android:layout_marginBottom="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/text_style"
                     android:text="SEARCH"
+                    android:background="@drawable/button_shape"
+
 
                     />
 

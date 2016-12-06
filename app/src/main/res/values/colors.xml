@@ -7,4 +7,10 @@
     <color name="edit_text_outline">#147291</color>
     <color name="colorBackground">#eff4fa</color>
     <color name="date_color">#009ee7</color>
+
+
+    <color name="background">#6a8eba</color>
+    <color name="background_dark">#59789f</color>
+
+
 </resources>
