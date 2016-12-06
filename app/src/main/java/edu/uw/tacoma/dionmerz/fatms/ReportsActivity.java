@@ -127,11 +127,6 @@ public class ReportsActivity extends AppCompatActivity implements View.OnClickLi
                 report(sb.toString());
                 break;
 
-            case R.id.button_add_flight:
-
-                break;
-
-
         }
 
 

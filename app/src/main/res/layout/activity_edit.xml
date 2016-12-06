@@ -99,6 +99,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="left"
                         android:text="Cancel"
+                        android:background="@drawable/button_shape"
                         android:layout_weight="1"/>
 
                     <Button
@@ -107,6 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:text="Update"
+                        android:background="@drawable/button_shape"
                         android:layout_weight="1"/>
 
                 </LinearLayout>

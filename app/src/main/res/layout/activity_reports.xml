@@ -45,7 +45,9 @@
             android:id="@+id/button_report_nonUS"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="REPORT 1"
+            android:text="Run Report"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_shape"
             android:layout_gravity="center_horizontal"/>
 
 
@@ -61,26 +63,11 @@
             android:id="@+id/button_report_popular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="REPORT 2"
+            android:text="Run Report"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_shape"
             android:layout_gravity="center_horizontal"/>
 
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="@string/string_add_flight" />
-
-
-        <Button
-            android:id="@+id/button_add_flight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Add Flight"
-            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
 </LinearLayout>

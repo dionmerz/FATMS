@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/itinerary_details_two">>
+    android:id="@+id/itinerary_details_two"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:background="@color/background">
 
 
     <LinearLayout
@@ -262,7 +265,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select Flight"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom"
+        android:background="@drawable/button_shape"/>
 
     </LinearLayout>
 </LinearLayout>

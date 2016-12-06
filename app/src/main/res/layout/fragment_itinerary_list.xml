@@ -10,5 +10,5 @@
     app:layoutManager="LinearLayoutManager"
     tools:context="edu.uw.tacoma.dionmerz.fatms.listView.OutboundItineraryFragment"
     tools:listitem="@layout/fragment_itinerary"
-    android:background="#e1dfdd"
+    android:background="@color/background"
     android:dividerHeight="1dip" />
