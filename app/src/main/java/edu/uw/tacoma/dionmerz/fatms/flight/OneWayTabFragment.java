@@ -2,12 +2,10 @@ package edu.uw.tacoma.dionmerz.fatms.flight;
 
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,7 +94,6 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
             AirportTaskOutgoing task = new AirportTaskOutgoing();
             String result = task.execute(URL).get();
         } catch (Exception e) {
-            Log.e("OneWayTab: ", e.getMessage());
         }
 
         // Build the Airport list spinner
@@ -109,7 +106,7 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
         mDepartureSpinner.setAdapter(airports);
         mDepartureSpinner.setSelection(0);
 
-        // Build the pub list spinner
+        // Build the airport list spinner
         mArrivalSpinner = (Spinner) mView.findViewById(R.id.arrival_spinner_oneway);
         mArrivalSpinner.setOnItemSelectedListener(this);
 
@@ -146,7 +143,6 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
                 i.putExtra("arrive", mArrivalAP);
                 i.putExtra("date", mDate);
 
-                System.out.println(mDate + "ff");
                 startActivity(i);
 
             }
@@ -210,7 +206,6 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
                         urlConnection.disconnect();
                 }
             }
-            Log.d("inBackGround: ", response);
             return response;
 
         }
@@ -225,7 +220,6 @@ public class OneWayTabFragment extends Fragment implements AdapterView.OnItemSel
          */
         @Override
         protected void onPostExecute(String result) {
-            Log.d("PostExecute: ", result);
             // Something wrong with the network or the URL.
             try {
                 JSONArray jsonArray = new JSONArray(result);

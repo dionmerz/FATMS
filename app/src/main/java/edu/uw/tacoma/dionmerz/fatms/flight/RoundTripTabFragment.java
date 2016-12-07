@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,7 +74,6 @@ public class RoundTripTabFragment extends Fragment implements AdapterView.OnItem
             RoundTripTabFragment.AirportTaskOutgoing task = new RoundTripTabFragment.AirportTaskOutgoing();
             String result = task.execute(URL).get();
         } catch (Exception e) {
-            Log.e("OneWayTab: ", e.getMessage());
         }
 
         // Build the Airport list spinner
@@ -206,8 +204,6 @@ public class RoundTripTabFragment extends Fragment implements AdapterView.OnItem
             mDepartureAP = mAirportList.get(i);
         }
 
-        System.out.println(mArrivalAP);
-        System.out.println(mDepartureAP);
     }
 
     @Override
@@ -249,7 +245,6 @@ public class RoundTripTabFragment extends Fragment implements AdapterView.OnItem
                         urlConnection.disconnect();
                 }
             }
-            Log.d("inBackGround: ", response);
             return response;
 
         }
@@ -265,7 +260,6 @@ public class RoundTripTabFragment extends Fragment implements AdapterView.OnItem
         @Override
         protected void onPostExecute(String result) {
 
-            Log.d("PostExecute: ", result);
             // Something wrong with the network or the URL.
             try {
                 JSONArray jsonArray = new JSONArray(result);
