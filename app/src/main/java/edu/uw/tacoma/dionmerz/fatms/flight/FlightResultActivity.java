@@ -297,7 +297,6 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
                         urlConnection.disconnect();
                 }
             }
-            Log.d("inBackGround: ", response);
             return response;
 
         }
@@ -313,7 +312,6 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
         @Override
         protected void onPostExecute(String result) {
 
-            Log.d("PostExecute: ", result);
             // Something wrong with the network or the URL.
             try {
                 JSONArray jsonArray = new JSONArray(result);
@@ -327,8 +325,6 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
 
 
             } catch (JSONException e) {
-                Log.i("It went wrong here: ", "Yep sure did");
-                Log.e("JSON Error: ", e.getMessage());
                 Toast.makeText(getApplicationContext(), "Something wrong with the data: " +
                         e.getMessage(), Toast.LENGTH_LONG).show();
             }
@@ -387,7 +383,6 @@ public class FlightResultActivity extends AppCompatActivity implements OutboundI
         @Override
         protected void onPostExecute(String result) {
 
-            Log.d("PostExecute: ", result);
             // Something wrong with the network or the URL.
             try {
                 JSONArray jsonArray = new JSONArray(result);

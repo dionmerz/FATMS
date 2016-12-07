@@ -192,8 +192,8 @@ public class ConfirmationDetailsFragment extends Fragment implements AdapterView
 
         ArrayAdapter<String> seatAdpater2 = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, mSeatsFlight2);
         seatAdpater2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSeats.setAdapter(seatAdpater2);
-        mSeats.setSelection(0);
+        mSeats2.setAdapter(seatAdpater2);
+        mSeats2.setSelection(0);
 
         // Build the pub list spinner
         Spinner mMeals2 = (Spinner) theView.findViewById(R.id.meal_spinner_leg2);
