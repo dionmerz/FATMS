@@ -111,7 +111,8 @@ public class PurchaseFlightActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if (mPassportID.getText() == null || mPassportCountry.getText() == null) {
+                if (mPassportID.getText().toString().isEmpty() || mPassportCountry.getText().toString().isEmpty()
+                        || mPassportID.getText().toString().equals("")  || mPassportCountry.getText().toString().equals("")) {
                     Toast.makeText(getApplication(), "Passport Number & Issuing Country is required", Toast.LENGTH_LONG).show();
 
                 } else {

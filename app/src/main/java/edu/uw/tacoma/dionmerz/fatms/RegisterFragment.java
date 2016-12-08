@@ -84,8 +84,10 @@ public class RegisterFragment extends Fragment {
                 register(url);
 
 
+
             }
         });
+        
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -99,6 +101,7 @@ public class RegisterFragment extends Fragment {
         Log.i("URL", url);
         RegisterTask task = new RegisterTask();
         task.execute(new String[]{url.toString()});
+
 
 // Takes you back to the previous fragment by popping the current fragment out.
         getActivity().getSupportFragmentManager().popBackStackImmediate();
@@ -217,21 +220,25 @@ public class RegisterFragment extends Fragment {
         protected void onPostExecute(String result) {
             // Something wrong with the network or the URL.
 
-            Log.i("OnPostExecute: ", result);
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 String status = (String) jsonObject.get("result");
                 if (status.equals("success")) {
                     mSharedPreferences.edit()
-                            .putBoolean(getString(R.string.LOGGEDIN), true)
+                            .putBoolean(getString(R.string.LOGGEDIN), false)
                             .commit();
 
 
                     Toast.makeText(getActivity(), "Registration Successful", Toast.LENGTH_LONG).show();
 
+                    Intent i = new Intent(getContext(), LoginActivity.class);
 
-                    Intent i = new Intent(getActivity(), FlightSearchActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
                     startActivity(i);
+
+
+
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), "Failed to register: "
                                     + jsonObject.get("error")
