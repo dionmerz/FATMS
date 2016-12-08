@@ -14,7 +14,6 @@
         android:text="Freedom\nAir\nTravel"
         android:textSize="36sp"
         android:layout_marginTop="10dp"
-
         android:gravity="center_horizontal"
         android:ems="10"
         android:textColor="@android:color/black" />
@@ -71,6 +70,15 @@
                 android:text="Register"/>
 
         </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/fatms_logo"
+            android:layout_marginTop="20dp"
+
+            />
 
 
         <!--<Button-->
